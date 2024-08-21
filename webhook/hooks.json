@@ -7,11 +7,21 @@
       "and": [
         {
           "match": {
-            "type": "value",
-            "value": "Bearer {{ getenv "HOOK_TOKEN" | js }}",
+            "type": "payload-hmac-sha1",
+            "secret": "{{ getenv "HOOK_TOKEN" | js }}",
             "parameter": {
               "source": "header",
-              "name": "Authorization"
+              "name": "X-Hub-Signature"
+            }
+          }
+        },
+        {
+          "match": {
+            "type": "value",
+            "value": "refs/heads/deploy",
+            "parameter": {
+              "source": "payload",
+              "name": "ref"
             }
           }
         }
