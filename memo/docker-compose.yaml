@@ -1,0 +1,39 @@
+services:
+  memos:
+    image: neosmemo/memos:stable
+    container_name: memos
+    labels: { com.centurylinklabs.watchtower.enable: true }
+    restart: unless-stopped
+    depends_on:
+      - db
+    volumes:
+      - ./memos:/var/opt/memos
+    ports:
+      - 5230:5230
+    networks:
+      - app
+    environment:
+      - MEMOS_DRIVER=postgres
+      - MEMOS_DSN=user=memos password=secret dbname=memosdb host=db sslmode=disable
+
+  db:
+    image: postgres:16.1
+    restart: unless-stopped
+    volumes:
+      - ./database:/var/lib/postgresql/data/
+    environment:
+      POSTGRES_USER: memos
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: memosdb
+
+  watchtower:
+    image: containrrr/watchtower:1.7.1
+    container_name: watchtower
+    restart: unless-stopped
+    command: --stop-timeout 60s --cleanup --schedule "0 0 4 * * *" --label-enable
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+networks:
+  app:
+    external: true

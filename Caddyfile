@@ -1,0 +1,36 @@
+valen.wang {
+  file_server / {
+    root html
+  }
+}
+
+webhook.valen.wang {
+  @auth {
+    not {
+      header Authorization Bearer {$SECRET_TOKEN}
+    }
+  }
+
+  reverse_proxy webhook:9000 {
+    header_up Authorization {http.request.header.Authorization}
+  }
+
+  respond @auth "Forbidden" 403
+}
+
+memos.valen.wang {
+  reverse_proxy memos:5230
+  log {
+    format console
+    output file ./logs/memos.log {
+      roll_size 10mb
+      roll_keep 20
+      roll_keep_for 7d
+    }
+  }
+  encode {
+    zstd
+    gzip
+    minimum_length 1024
+  }
+}

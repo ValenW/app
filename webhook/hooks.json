@@ -1,0 +1,21 @@
+[
+  {
+    "id": "deploy_html",
+    "execute-command": "./scripts/deploy_html.sh",
+    "command-working-directory": "/app",
+    "trigger-rule": {
+      "and": [
+        {
+          "match": {
+            "type": "value",
+            "value": "Bearer {{ getenv "HOOK_TOKEN" | js }}",
+            "parameter": {
+              "source": "header",
+              "name": "Authorization"
+            }
+          }
+        }
+      ]
+    }
+  }
+]
