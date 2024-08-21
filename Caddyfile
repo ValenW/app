@@ -1,21 +1,10 @@
 valen.wang {
-  file_server / {
-    root html
-  }
+  root * /var/www/html
+  file_server
 }
 
 webhook.valen.wang {
-  @auth {
-    not {
-      header Authorization Bearer {$HOOK_TOKEN}
-    }
-  }
-
-  reverse_proxy webhook:9000 {
-    header_up Authorization {http.request.header.Authorization}
-  }
-
-  respond @auth "Forbidden" 403
+  reverse_proxy webhook:9000
 }
 
 memos.valen.wang {
