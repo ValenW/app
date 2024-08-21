@@ -1,5 +1,6 @@
 caddy
 html
-*/*.env
+.env
+*/**/.env
 memo/database
 memo/memos
