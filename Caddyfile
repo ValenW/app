@@ -7,7 +7,7 @@ valen.wang {
 webhook.valen.wang {
   @auth {
     not {
-      header Authorization Bearer {$SECRET_TOKEN}
+      header Authorization Bearer {$HOOK_TOKEN}
     }
   }
 
