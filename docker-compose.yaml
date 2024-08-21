@@ -14,7 +14,7 @@ services:
       - ./caddy/data:/data
       - ./caddy/config:/config
       - ./caddy/logs:/logs
-      - ./Caddyfile.local:/etc/caddy/Caddyfile
+      - ./Caddyfile:/etc/caddy/Caddyfile
       - ./html:/var/www/html # Your web directory on the host
 
 networks:
