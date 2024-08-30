@@ -7,6 +7,15 @@ webhook.valen.wang {
   reverse_proxy webhook:9000
 }
 
+api.valen.wang {
+  handle_path /lib-search/* {
+    reverse_proxy lib_search:7500 {
+      # Strip the /lib-search prefix before proxying
+      rewrite * /{path.2}
+    }
+  }
+}
+
 memos.valen.wang {
   reverse_proxy memos:5230
   log {

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define an array of service directories in the order they should be managed
-services=("." "memo" "webhook")
+services=("." "memo" "webhook" "lib-search-server")
 
 # Initialize an empty array to keep track of started services
 started_services=()
