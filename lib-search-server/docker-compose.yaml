@@ -1,6 +1,6 @@
 services:
   lib-search-server:
-    image: valen/lib-search-server:latest
+    image: cf-workers-docker-io-cuj.pages.dev/valen/lib-search-server:v1.0.0
     container_name: lib-search-server
     labels: { com.centurylinklabs.watchtower.enable: true }
     restart: unless-stopped

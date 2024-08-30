@@ -1,22 +1,20 @@
-valen.wang {
+valen.wang, valen.fun {
   root * /var/www/html
   file_server
 }
 
-webhook.valen.wang {
+webhook.valen.wang, webhook.valen.fun {
   reverse_proxy webhook:9000
 }
 
-api.valen.wang {
+api.valen.wang, api.valen.fun {
   handle_path /lib-search/* {
-    reverse_proxy lib_search:7500 {
-      # Strip the /lib-search prefix before proxying
-      rewrite * /{path.2}
-    }
+    rewrite * {path}
+    reverse_proxy lib-search-server:7500
   }
 }
 
-memos.valen.wang {
+memos.valen.wang, memos.valen.fun {
   reverse_proxy memos:5230
   log {
     format console
