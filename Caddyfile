@@ -1,32 +1,36 @@
 valen.wang, valen.fun {
-  root * /var/www/html
-  file_server
+	root * /var/www/html
+	file_server
 }
 
 webhook.valen.wang, webhook.valen.fun {
-  reverse_proxy webhook:9000
+	reverse_proxy webhook:9000
+}
+
+webdav.valen.wang, webdav.valen.fun {
+	reverse_proxy webdav:80
 }
 
 api.valen.wang, api.valen.fun {
-  handle_path /lib-search/* {
-    rewrite * {path}
-    reverse_proxy lib-search-server:7500
-  }
+	handle_path /lib-search/* {
+		rewrite * {path}
+		reverse_proxy lib-search-server:7500
+	}
 }
 
 memos.valen.wang, memos.valen.fun {
-  reverse_proxy memos:5230
-  log {
-    format console
-    output file ./logs/memos.log {
-      roll_size 10mb
-      roll_keep 20
-      roll_keep_for 7d
-    }
-  }
-  encode {
-    zstd
-    gzip
-    minimum_length 1024
-  }
+	reverse_proxy memos:5230
+	log {
+		format console
+		output file ./logs/memos.log {
+			roll_size 10mb
+			roll_keep 20
+			roll_keep_for 7d
+		}
+	}
+	encode {
+		zstd
+		gzip
+		minimum_length 1024
+	}
 }

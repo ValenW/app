@@ -14,7 +14,7 @@ services:
       VERBOSE: true
       HOOKS: "/app/hooks.json"
       DEBUG: true
-      URL_PREFIX: ''
+      URL_PREFIX: 'hooks'
       LANGUAGE: zh-CN
       TEMPLATE: true
       # HOT_RELOAD: true

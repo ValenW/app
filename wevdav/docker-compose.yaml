@@ -1,0 +1,17 @@
+services:
+  webdav:
+    image: bytemark/webdav
+    ports:
+      - "5500:80"
+    restart: unless-stopped
+    volumes:
+      - ./data:/var/lib/dav
+    environment:
+      - USERNAME=valen
+      - PASSWORD=svWCm:1I6|6a}20vTE4S
+    networks:
+      - app
+
+networks:
+  app:
+    external: true
