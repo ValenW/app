@@ -7,8 +7,8 @@ services:
     volumes:
       - ./data:/var/lib/dav
     environment:
-      - USERNAME=valen
-      - PASSWORD=svWCm:1I6|6a}20vTE4S
+      - USERNAME=${WEBDAV_USERNAME}
+      - PASSWORD=${WEBDAV_PASSWORD}
     networks:
       - app
 

@@ -4,3 +4,4 @@ html
 */**/.env
 memo/database
 memo/memos
+webdav/data

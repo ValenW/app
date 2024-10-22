@@ -46,6 +46,11 @@ rollback() {
   done
 }
 
+# export envs
+set -a
+source ./.env
+set +a
+
 # Check the first argument passed to the script
 if [ "$1" == "up" ]; then
   up_services
