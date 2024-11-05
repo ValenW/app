@@ -3,6 +3,11 @@ valen.wang, valen.fun {
 	file_server
 }
 
+proxy.valen.fun {
+	root * /cert
+	file_server
+}
+
 webhook.valen.wang, webhook.valen.fun {
 	reverse_proxy webhook:9000
 }

@@ -16,6 +16,7 @@ services:
       - ./caddy/logs:/logs
       - ./Caddyfile:/etc/caddy/Caddyfile
       - ./html:/var/www/html # Your web directory on the host
+      - ./cert:/cert
 
 networks:
   app:
