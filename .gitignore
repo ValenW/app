@@ -5,3 +5,5 @@ html
 memo/database
 memo/memos
 webdav/data
+nginx-proxy-manager/data
+nginx-proxy-manager/letsencrypt

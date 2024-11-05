@@ -4,8 +4,8 @@ services:
       context: .
       dockerfile: Dockerfile
     restart: unless-stopped
-    ports:
-      - 9000:9000
+    # ports:
+    #   - 9000:9000
     networks:
       - app
     environment:
