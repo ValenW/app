@@ -18,6 +18,8 @@ services:
       - ./Caddyfile:/etc/caddy/Caddyfile
       - ./html:/var/www/html # Your web directory on the host
       - ./cert:/cert
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
 networks:
   app:
