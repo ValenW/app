@@ -3,9 +3,12 @@ valen.wang, valen.fun {
 	file_server
 }
 
-proxy.valen.fun {
+:11442 {
 	root * /cert
 	file_server
+}
+proxy.valen.fun {
+	reverse_proxy host.docker.internal:11443
 }
 
 webhook.valen.wang, webhook.valen.fun {
