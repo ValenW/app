@@ -8,7 +8,7 @@ valen.wang, valen.fun {
 	file_server
 }
 proxy.valen.fun {
-	reverse_proxy host.docker.internal:11443
+	reverse_proxy https://host.docker.internal:11443
 }
 
 webhook.valen.wang, webhook.valen.fun {

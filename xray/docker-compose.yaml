@@ -1,0 +1,7 @@
+services:
+  xray:
+    image: teddysun/xray
+    restart: unless-stopped
+    volumes:
+      - ./data:/etc/xray
+    network_mode: "host"
