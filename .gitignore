@@ -7,3 +7,5 @@ memo/memos
 webdav/data
 nginx-proxy-manager/data
 nginx-proxy-manager/letsencrypt
+xray/data/cert/
+xray/data/log/

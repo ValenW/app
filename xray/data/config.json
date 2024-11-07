@@ -10,7 +10,7 @@
 {
   // 1\_日志设置
   "log": {
-    "loglevel": "warning", // 内容从少到多: "none", "error", "warning", "info", "debug"
+    "loglevel": "debug", // 内容从少到多: "none", "error", "warning", "info", "debug"
     "access": "/etc/xray/log/access.log", // 访问记录
     "error": "/etc/xray/log/error.log" // 错误记录
   },
@@ -69,7 +69,7 @@
         "decryption": "none",
         "fallbacks": [
           {
-            "dest": 11442 // 默认回落到防探测的代理
+            "dest": "80" // 默认回落到防探测的代理
           }
         ]
       },
