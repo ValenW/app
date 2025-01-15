@@ -8,19 +8,9 @@ services:
       - 3210:3210
     networks:
       - app
-    environment:
-      OPENAI_API_KEY=
-      OPENAI_PROXY_URL=
-      ACCESS_CODE=
-      OPENAI_MODEL_LIST=
+    env_file:
+      - ../.env
 
-  watchtower:
-    image: containrrr/watchtower:1.7.1
-    container_name: watchtower
-    restart: unless-stopped
-    command: --stop-timeout 60s --cleanup --schedule "0 0 4 * * *" --label-enable
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
 networks:
   app:
     external: true

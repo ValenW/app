@@ -15,6 +15,10 @@ webhook.valen.wang, webhook.valen.fun {
 	reverse_proxy webhook:9000
 }
 
+chat.valen.wang, chat.valen.fun {
+	reverse_proxy lobe:3210
+}
+
 webdav.valen.wang, webdav.valen.fun {
 	reverse_proxy webdav:80
 }
