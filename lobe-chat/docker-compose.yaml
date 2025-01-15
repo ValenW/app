@@ -1,0 +1,26 @@
+services:
+  lobe:
+    image: lobehub/lobe-chat
+    container_name: lobe-chat
+    labels: { com.centurylinklabs.watchtower.enable: true }
+    restart: unless-stopped
+    ports:
+      - 3210:3210
+    networks:
+      - app
+    environment:
+      OPENAI_API_KEY=
+      OPENAI_PROXY_URL=
+      ACCESS_CODE=
+      OPENAI_MODEL_LIST=
+
+  watchtower:
+    image: containrrr/watchtower:1.7.1
+    container_name: watchtower
+    restart: unless-stopped
+    command: --stop-timeout 60s --cleanup --schedule "0 0 4 * * *" --label-enable
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+networks:
+  app:
+    external: true
