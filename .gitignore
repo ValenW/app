@@ -9,3 +9,5 @@ nginx-proxy-manager/data
 nginx-proxy-manager/letsencrypt
 xray/data/cert/
 xray/data/log/
+lobe-server/data
+lobe-server/s3_data

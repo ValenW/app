@@ -5,7 +5,7 @@ services:
     labels: { com.centurylinklabs.watchtower.enable: true }
     restart: unless-stopped
     ports:
-      - 3210:3210
+      - 3211:3210
     networks:
       - app
     env_file:
