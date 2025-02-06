@@ -1,6 +1,6 @@
 name: lobe-chat-database
 services:
-  network-service:
+  lobe-network-service:
     image: alpine
     container_name: lobe-network
     ports:
@@ -10,7 +10,7 @@ services:
       - '${LOBE_PORT}:3210' # LobeChat
     command: tail -f /dev/null
     networks:
-      - lobe-network
+      - app
 
   postgresql:
     image: pgvector/pgvector:pg16
@@ -29,12 +29,12 @@ services:
       retries: 5
     restart: always
     networks:
-      - lobe-network
+      - app
 
   minio:
     image: minio/minio
     container_name: lobe-minio
-    network_mode: 'service:network-service'
+    network_mode: 'service:lobe-network-service'
     volumes:
       - './s3_data:/etc/minio/data'
     environment:
@@ -61,7 +61,7 @@ services:
     image: casbin/casdoor
     container_name: lobe-casdoor
     entrypoint: /bin/sh -c './server --createDatabase=true'
-    network_mode: 'service:network-service'
+    network_mode: 'service:lobe-network-service'
     depends_on:
       postgresql:
         condition: service_healthy
@@ -78,11 +78,11 @@ services:
   lobe:
     image: lobehub/lobe-chat-database
     container_name: lobe-chat
-    network_mode: 'service:network-service'
+    network_mode: 'service:lobe-network-service'
     depends_on:
       postgresql:
         condition: service_healthy
-      network-service:
+      lobe-network-service:
         condition: service_started
       minio:
         condition: service_started
@@ -111,5 +111,5 @@ volumes:
     driver: local
 
 networks:
-  lobe-network:
-    driver: bridge
+  app:
+    external: true

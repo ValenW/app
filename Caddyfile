@@ -20,15 +20,15 @@ chat.valen.wang, chat.valen.fun {
 }
 
 lobe.valen.wang, lobe.valen.fun {
-	reverse_proxy host.docker.internal:3210
+	reverse_proxy lobe-network-service:3210
 }
 
 lobe-auth.valen.wang, lobe-auth.valen.fun {
-	reverse_proxy host.docker.internal:8000
+	reverse_proxy lobe-network-service:8000
 }
 
 lobe-minio.valen.wang, lobe-minio.valen.fun {
-	reverse_proxy host.docker.internal:9000
+	reverse_proxy lobe-network-service:9000
 }
 
 webdav.valen.wang, webdav.valen.fun {
