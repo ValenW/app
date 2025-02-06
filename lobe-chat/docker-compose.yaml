@@ -1,7 +1,7 @@
 services:
   lobe:
     image: lobehub/lobe-chat
-    container_name: lobe-chat
+    container_name: lobe-chat-client
     labels: { com.centurylinklabs.watchtower.enable: true }
     restart: unless-stopped
     ports:
