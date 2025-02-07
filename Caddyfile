@@ -58,7 +58,3 @@ memos.valen.wang, memos.valen.fun {
 		minimum_length 1024
 	}
 }
-
-xui.valen.wang, xui.valen.fun {
-	reverse_proxy host.docker.internal:33325
-}

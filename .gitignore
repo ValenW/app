@@ -11,3 +11,4 @@ xray/data/cert/
 xray/data/log/
 lobe-server/data
 lobe-server/s3_data
+lobe-server/init_data.json
