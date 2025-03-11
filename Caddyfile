@@ -35,6 +35,10 @@ webdav.valen.wang, webdav.valen.fun {
 	reverse_proxy webdav:80
 }
 
+search.valen.wang, search.valen.fun {
+	reverse_proxy searxng:8080
+}
+
 api.valen.wang, api.valen.fun {
 	handle_path /lib-search/* {
 		rewrite * {path}
