@@ -53,7 +53,7 @@ services:
         sleep 5
         mc alias set myminio http://localhost:${MINIO_PORT} ${MINIO_ROOT_USER} ${MINIO_ROOT_PASSWORD}
         echo 'Creating bucket ${MINIO_LOBE_BUCKET}'
-        mc mb myminio/${MINIO_LOBE_BUCKET}
+        mc mb myminio/${MINIO_LOBE_BUCKET} 2>/dev/null || echo "Bucket already exists"
         wait \$MINIO_PID
       "
 
